@@ -1,0 +1,16 @@
+/* Minimal and clean background with slight blue tint */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ecf1f9; /* white mixed with soft blue */
+  color: #333;
+  min-height: 100vh;
+  padding: 2rem;
+}

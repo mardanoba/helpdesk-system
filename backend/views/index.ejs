@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>">
+<head>
+  <meta charset="UTF-8">
+  <title><%= __('welcome') %></title>
+</head>
+<body>
+  <h1><%= __('welcome') %></h1>
+
+  <form method="get" action="/">
+    <label for="lang">🌐 Select Language:</label>
+    <select name="lang" id="lang" onchange="this.form.submit()">
+      <option value="en" <%= locale === 'en' ? 'selected' : '' %>>English</option>
+      <option value="am" <%= locale === 'am' ? 'selected' : '' %>>አማርኛ</option>
+    </select>
+  </form>
+
+  <p><a href="/login"><%= __('login') %></a> | <a href="/register"><%= __('register') %></a></p>
+</body>
+</html>

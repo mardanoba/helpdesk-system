@@ -1,0 +1,35 @@
+.logout-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(173, 216, 230, 0.3); /* transparent baby blue */
+  color: #064663; /* dark teal */
+  border: 2px solid #0a8ccf; /* baby blue border */
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(10, 140, 207, 0.3);
+  z-index: 1000; /* make sure it’s on top */
+}
+
+.logout-btn:hover {
+  background: #0a8ccf;
+  color: white;
+  box-shadow: 0 4px 12px rgba(10, 140, 207, 0.6);
+}
+
+.logout-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.logout-text {
+  user-select: none;
+}

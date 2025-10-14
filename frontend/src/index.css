@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base body styling */
+body.custom-page {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #212529;
+  background-color: #f0f6fc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom links */
+.custom-page a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.custom-page a:hover {
+  text-decoration: underline;
+}
+
+/* Headings */
+.custom-page h1,
+.custom-page h2,
+.custom-page h3,
+.custom-page h4,
+.custom-page h5,
+.custom-page h6 {
+  color: #343a40;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Custom buttons */
+.custom-page button,
+.custom-page .btn {
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-page button:hover,
+.custom-page .btn:hover {
+  opacity: 0.9;
+}
+
+/* Tables */
+.custom-page table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-page th,
+.custom-page td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  vertical-align: middle;
+}
+
+.custom-page th {
+  background-color: #dfe9f3;
+  font-weight: 600;
+}
+
+/* Form controls */
+.custom-page input,
+.custom-page select,
+.custom-page textarea {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  width: 100%;
+}
+
+.custom-page input:focus,
+.custom-page select:focus,
+.custom-page textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Alerts */
+.custom-page .alert {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border: 1px solid #bee5eb;
+}
+
+/* Container */
+.custom-page .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1rem;
+}

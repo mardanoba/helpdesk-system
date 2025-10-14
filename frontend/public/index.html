@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/ITIL.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ITIL Help Desk Ticketing System Web App" />
+    <meta name="author" content="Your Name or Company" />
+    <title>ITIL App</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      #custom-language-dropdown {
+        position: absolute;
+        top: 0;
+        left: 200px;
+        z-index: 9999;
+        background-color: #ffffff;
+        padding: 0 px 0.2px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        font-family: 'Poppins', sans-serif;
+        width: 160px;
+      }
+
+      #custom-language-dropdown label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      #custom-language-dropdown select {
+        width: 100%;
+        padding: 6px 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        background-color: white;
+        font-size: 13px;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- Custom Language Dropdown -->
+    <div id="custom-language-dropdown">
+      <label for="languageSelector">🌐 Language</label>
+      <select id="languageSelector">
+        <option value="en">🇬🇧 English</option>
+        <option value="am">🇪🇹 አማርኛ (Amharic)</option>
+
+        <option value="ti">ET ትግርኛ (Tigrinya)</option>
+      </select>
+    </div>
+
+    <!-- Hidden Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Google Translate Loader -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,am,or,ti',
+            autoDisplay: false,
+          },
+          'google_translate_element'
+        );
+      }
+
+      (function () {
+        const gt = document.createElement('script');
+        gt.type = 'text/javascript';
+        gt.async = true;
+        gt.src =
+          '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&hl=en';
+        document.getElementsByTagName('head')[0].appendChild(gt);
+      })();
+
+      window.addEventListener('load', () => {
+        const dropdown = document.getElementById('languageSelector');
+        const savedLang = localStorage.getItem('selectedLang') || 'en';
+        dropdown.value = savedLang;
+
+        const setGoogleTranslateLanguage = (lang) => {
+          const googleDropdown = document.querySelector('.goog-te-combo');
+          if (googleDropdown) {
+            googleDropdown.value = lang;
+            googleDropdown.dispatchEvent(new Event('change'));
+            return true;
+          }
+          return false;
+        };
+
+        let attempts = 0;
+        const maxAttempts = 10;
+        const intervalId = setInterval(() => {
+          if (setGoogleTranslateLanguage(savedLang) || attempts > maxAttempts) {
+            clearInterval(intervalId);
+          }
+          attempts++;
+        }, 500);
+
+        dropdown.addEventListener('change', (e) => {
+          const selectedLang = e.target.value;
+          document.cookie =
+            "googtrans=;path=/;domain=" +
+            window.location.hostname +
+            ";expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+          localStorage.removeItem('googtrans');
+
+          if (!setGoogleTranslateLanguage(selectedLang)) {
+            setTimeout(() => {
+              location.reload();
+            }, 500);
+          } else {
+            localStorage.setItem('selectedLang', selectedLang);
+            setTimeout(() => location.reload(), 500);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
